@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app='MsgApp'>
+  <head>
+    <meta charset="utf-8">
+    <script src="../angular.min.js"></script>
+    <script src="app.js"></script>
+    <style> body { font-size: 1.2em; }</style>
+    <title>Expressions and Interpolation</title>
+  </head>
+  <body>
+
+    <h1>Expressions and Interpolation</h1>
+    <div ng-controller='MsgController'>
+      Message is:
+        {{name}}
+        <br/>
+        {{sayHello();}}
+
+      <div>
+        <button ng-click="flipPosition()">{{position}}</button>
+          <br/>
+          <!-- If only src, 404 error in console as html processed before angular js interpolation
+            So use ng- src -->
+          <img ng-src="images/{{image}}" alt="Lion" />
+      </div>
+    </div>
+
+  </body>
+</html>

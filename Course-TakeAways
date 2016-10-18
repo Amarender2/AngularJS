@@ -1,0 +1,17 @@
+Expressions and Interpolation
+---------------------------------------------------
+{{}} - double braces, mustaches, handlebars call anything
+Expressions : {{exp}}
+Something that evaluates to a value
+Processed by AngularJS and similar to eval(some_js) as in general JS
+Diff:
+1. Executed in context of scope and has access to properties defined in $scope
+2. Doesn't throw errors if it results in TypeError or ReferenceError, just empty string returned
+3. Also, unlike eval, control statements are not allowed inside expressions
+4. Accept a filter or a filter chain to format the output.
+
+Interpolation
+-----------------------------------------------------
+Process of evaluating a string and finding placeholders in it and replacing it with some values later
+For ex: Hello {{name}} is interpolated to Hello Amar (message = Amar)
+Still connected, so if message changes, output changes.
