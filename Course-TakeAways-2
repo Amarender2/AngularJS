@@ -1,0 +1,39 @@
+Digest Cycles in Angular JS
+------------------------------------------
+onclick- simple JS - Handles event
+
+ng-click, ng-keyup, event queue
+click handled by Angular Context($scope)
+call $digest
+
+watchers setup - 2ways - functions keeps watching variables
+1. $scope.name in JS
+2. {{name}} in HTML
+3. ng-model
+
+Digest cycle runs to check if any value changed, two times, to see anything changed, to see nothing changed
+dirty checking, loop runs until nothing changed
+Once nothing has changed , reports to DOM, repaints the page
+
+Setup watchers
+$scope.$watch('variable', function(newValue, oldValue) {
+ // blah blah blah
+});
+
+Digest Loop
+If anythings changed, fired two times - to see anything changed, to see nothing changed
+If nothings changed, fired only once.
+
+Only applies to things done inside of Angular Context
+
+<input type="text" ng-model="value">
+<div>{{ value + '!' }}</div>
+<button ng-click="getValue()">Get Value</button>
+
+Not correct. ng-model causes 1. Interpolation of {{ value + '!' }} causes another.
+You would think that since it's the same property, Angular wouldn't create another watcher.
+However, interpolations *always* create another watch. The prime example of why is the + "!" part.
+It needs a separate watcher because it's not simply a matter of that property.
+Inside of a interpolation, you can have operations performed, so another watcher
+that handles those operations and redisplays the newly created results is needed.
+The button's ng-click doesn't cause any. So, final answer is 2.
