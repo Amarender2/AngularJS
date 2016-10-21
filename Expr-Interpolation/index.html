@@ -14,10 +14,13 @@
       Message is:
         {{name}}
         <br/>
-        {{sayHello();}}
+        {{sayHello()}}
 
       <div>
         <button ng-click="flipPosition()">{{position}}</button>
+        <br/>
+        <!-- Currency symbol and precision are optional -->
+        Cost: {{cost | currency : '@': '3'}}
           <br/>
           <!-- If only src, 404 error in console as html processed before angular js interpolation
             So use ng- src -->

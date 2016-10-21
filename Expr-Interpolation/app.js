@@ -4,12 +4,13 @@
 angular.module('MsgApp', [])
 .controller('MsgController', MsgController);
 
-MsgController.$inject = ['$scope'];
-function MsgController($scope) {
+MsgController.$inject = ['$scope', '$filter'];
+function MsgController($scope, $filter) {
   $scope.name = "Amarender Reddy!!";
 
   $scope.position = "Stand";
   $scope.image = "Sleep.png";
+  $scope.cost = .45;
 
   $scope.flipPosition = function() {
     if($scope.position == "Stand") {
@@ -22,7 +23,9 @@ function MsgController($scope) {
   }
 
   $scope.sayHello = function() {
-    return "Amar likes to study algorithms a lot!!";
+    var msg = "Amar likes to study algorithms a lot!!";
+    var output = $filter('uppercase')(msg);
+    return output;
   }
 }
 

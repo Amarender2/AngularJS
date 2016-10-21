@@ -15,3 +15,14 @@ Interpolation
 Process of evaluating a string and finding placeholders in it and replacing it with some values later
 For ex: Hello {{name}} is interpolated to Hello Amar (message = Amar)
 Still connected, so if message changes, output changes.
+
+Filters In Angular JS
+------------------------------------
+var output = $filter('uppercase')(value);
+value will be uppercased, 'uppercase is pre-defined filter'
+1. creates filtering function
+2. applies that function to value
+3. Filter specific optional arguments
+4. Direct use in HTML {{ value | uppercase}} or {{ "Hello" | uppercase}} or {{ "Hello" | uppercase : customarg :customarg}}
+
+Angularjs.org -> Developer Guide -> built in filters
