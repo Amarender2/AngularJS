@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app='MsgApp'>
+  <head>
+    <meta charset="utf-8">
+    <script src="../angular.min.js"></script>
+    <script src="app.js"></script>
+    <style> body { font-size: 1.2em; }</style>
+    <title>Expressions and Interpolation</title>
+  </head>
+  <body>
+
+    <h1>Expressions and Interpolation</h1>
+    <div ng-controller='MsgController'>
+      Message is:
+        {{name}}
+        <br/>
+        Original : {{sayHello()}} <br>
+        Replaced : {{replaceFullName()}} <br>
+        Args From JS: {{replaceFullNameWithArgs()}} <br>
+        <!-- No need to append Filter like in JS-->
+        Args From HTML : {{replaceFullNameWithArgs() | replaceArgs : 'algorithms' : 'data structures'}} <br>
+        Chaining From HTML : {{replaceFullNameWithArgs() | replaceArgs : 'algorithms' : 'data structures' | uppercase}}
+
+    </div>
+
+  </body>
+</html>

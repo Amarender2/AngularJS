@@ -24,5 +24,31 @@ value will be uppercased, 'uppercase is pre-defined filter'
 2. applies that function to value
 3. Filter specific optional arguments
 4. Direct use in HTML {{ value | uppercase}} or {{ "Hello" | uppercase}} or {{ "Hello" | uppercase : customarg :customarg}}
+5. Angularjs.org -> Developer Guide -> built in filters
 
-Angularjs.org -> Developer Guide -> built in filters
+Custom Filters in Angular JS
+------------------------------------------------------
+Procedure:
+1. Define filter factory function
+Factory is a place to create new objects
+function CustomFilterFactory() {
+  return function(input, customArguments if needed) {
+    return "Hello";
+  };
+}
+
+2. Register filter factory with module
+.filter('custom', CustomFilterFactory);
+
+3. Inject it in controller, name'Filter' , Append filter to instance name
+Ctrl.$inject = ['$scope', 'customFilter'];
+function Ctrl($scope, customFilter) {
+var name = "Amar";
+customFilter(name, customParameters);
+}
+
+If HTML used, no need to inject (Step 3), same name no need of appending Filter
+{{name | custom : arg1 : arg2 so on}}
+
+Chain Filters
+{{name | uppercase | custom}}
