@@ -48,3 +48,23 @@ In example, timeout event is used.
 1. $scope.$digest
 2. $scope.$apply(code); // will handle exceptions in angular context
 3. find angular specific service, for ex: $timeout
+
+
+2-way, 1-way binding
+------------------------------------------------
+2-way binding
+ng-model='name'
+one listener setup to listen to changes from browser
+one watcher setup to watch changes in controller
+
+1-way binding
+{{name}}
+one watcher setup to watch changes from controller
+
+Watchers stay for above two types, forever
+
+Many watchers setup will degrade the app perf sometimes
+1-time binding
+{{::name}}
+initialize once from controller, then removes watcher, so less watchers, For ex: username doesn't change frequently
+Removes watcher after initializes one time binding value
