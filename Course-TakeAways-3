@@ -1,0 +1,5 @@
+ng-repeat
+-------------------------------
+another directive to loop
+ng-repeat="item in collection"
+exposes $index property to show the numeric index of the list value
