@@ -37,3 +37,14 @@ It needs a separate watcher because it's not simply a matter of that property.
 Inside of a interpolation, you can have operations performed, so another watcher
 that handles those operations and redisplays the newly created results is needed.
 The button's ng-click doesn't cause any. So, final answer is 2.
+
+
+Digest Apply
+--------------------------------------------------
+Events which happen inside angular context(ng-click) are handled by $digest as we have seen above
+But to handle events happening outside of angular context $apply is used
+In example, timeout event is used.
+3 solutions
+1. $scope.$digest
+2. $scope.$apply(code); // will handle exceptions in angular context
+3. find angular specific service, for ex: $timeout
