@@ -3,3 +3,12 @@ ng-repeat
 another directive to loop
 ng-repeat="item in collection"
 exposes $index property to show the numeric index of the list value
+
+filtered-ng-reapeat
+----------------------------------
+Angular has special filter called 'filter' just like 'uppercase'
+HTML
+ng-repeat="item in names | filter : searchString"
+
+JS
+$filter('filter')(array, expr, comparator, anyPropertykey);
