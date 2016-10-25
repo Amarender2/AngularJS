@@ -56,3 +56,38 @@ function CustomService() {
 
 var somServ = CustomService.getSomeService();
 someServ.method();
+
+
+Custom Service Using Provider Method
+---------------------------------------------------
+Configure Service before application starts and it will be like that until life of web app.
+
+1. Define Provider Function
+function ServiceProvider() {
+var provider = this;
+provider.config = {---};
+// Factory Function just like .factory
+provider.$get = function() {
+var service = new Service(provider.config.prop);
+return service;
+}
+}
+
+2.Register Provider with module
+.provider('nameOfService', ServiceProvider);
+
+3. Inject it in controller, service as usual
+ctrl.$inject=['nameOfService']
+function ctrl(nameOfService) {
+
+}
+
+4.a. Register config function
+.config(Config);
+Guaranteed to run before any Factories, controller, services created
+
+4.b. Inject Provider in to config
+Config.$inject=['nameOfServiceProvider']
+function Config(nameOfServiceProvider) {
+nameOfServiceProvider.config.prop=10;
+}
