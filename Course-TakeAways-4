@@ -8,8 +8,51 @@ Do not --------------- to Share code or data or state across controllers
 Solution is Using Custom Service
 
 .service('customService', CustomService); - Treats Function as Function Constructors
+Yes, Angular will instantiate CustomService using 'new CustomService' type of statement.
 'customService' - used to inject in other services, controllers.
 CustomService - function constructor
 Uses only single instance, SINGLETON Design Pattern, So can easily share data between controllers
 
 Lazily Instantiated
+
+Custom Services Using Factory Method
+---------------------------------------------------------------
+Factory Design Pattern
+Central place that produces new objects or functions
+
+Now there's quite a bit of confusion in the AngularJS community regarding factory versus service.
+After all, the .factory() method is sometimes called a service factory, which actually makes sense,
+because the factory is something that can produce a service. But there are some very
+important distinctions. The .factory() method is not just another way of creating the same
+service you create with the .service() method, but it can be. The .service() method is also
+called a factory, but a much more limited one compared to the .factory() method.
+The .service() method is a factory that always produces the same type of service, a singleton,
+and without an easy way to configure its behavior. That .service() method is usually used as a
+shortcut for something that doesn't require any configuration whatsoever.
+
+.service('customService', CustomService); - Be the service
+.factory('customService', CustomService); - Produce the service
+
+Service Factory Function
+1. return function
+function CustomService() {
+ var factory  = function() {
+  return new SomeService();
+ }
+ return factory;
+}
+
+var someServ = CustomService();
+someServ.method();
+2. return object literal
+function CustomService() {
+ var factory  = {
+  getSomeService : function() {
+    return new SomeService();
+  }
+ }
+ return factory;
+}
+
+var somServ = CustomService.getSomeService();
+someServ.method();
