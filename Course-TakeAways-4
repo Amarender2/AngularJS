@@ -1,0 +1,15 @@
+Controller's Responsibilities
+----------------------------------------
+Setup initial state of $scope
+Add behavior to $scope
+
+Do not use controllers to handle business logic directly
+Do not --------------- to Share code or data or state across controllers
+Solution is Using Custom Service
+
+.service('customService', CustomService); - Treats Function as Function Constructors
+'customService' - used to inject in other services, controllers.
+CustomService - function constructor
+Uses only single instance, SINGLETON Design Pattern, So can easily share data between controllers
+
+Lazily Instantiated
