@@ -12,3 +12,33 @@ ng-repeat="item in names | filter : searchString"
 
 JS
 $filter('filter')(array, expr, comparator, anyPropertykey);
+
+Prototypal Inheritance
+---------------------------------------
+Same as Java
+
+Scope Inheritance
+-------------------------------------------
+Same as Java
+$scope1
+---->$scope2
+---->$scope3
+
+$scope1.prop=abc, then $scope2.prop and $scope3.prop = abc, If $scope2.prop=def, still $scope.prop=abc
+
+$scope1.obj.prop=abc, then $scope2.obj.prop and $scope3.obj.prop = abc,
+If $scope2.obj.prop=def, then $scope.obj.prop=def
+
+ng-controller='Contoller1 as ctrl1'
+ng-controller='Contoller2 as ctrl2'
+{{ctlr2.prop}}
+{{ctlr1.prop}}
+
+
+Controller As Syntax
+------------------------------------
+Prototypal Inheritance in JS is based on object instances rather than classes
+Properties looked up through prototype chain
+local variables mask the parents property
+child's $scope inherited from parent's $scope
+Attach properties to this not to $scope
