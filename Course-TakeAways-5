@@ -49,12 +49,17 @@ HTTP Service
 --------------------------------------
 $http({
   method:"GET",
-  url:"http:some",
+  url:"http:some", // Only Required Property URL
   param:{param1: "value1"}
 }).then(
-function(){
+function(result){
 
 },
-function(){
+function(error){
 
 });
+
+$http service is based on promise API exposed to by $q service
+Returns a promise , then use .then
+response.data returns the server data response
+module.constant which can be used everywhere as injectable constant, Ex: ApiBasePath in HTTPService
