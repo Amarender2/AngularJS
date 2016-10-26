@@ -1,0 +1,27 @@
+Custom Directives
+---------------------------------------
+Directive ?
+A Directive is really just a Marker on a DOM element that tells Angular's HTML
+compiler to attach a specified behavior to that DOM element. The compiler can
+also transform/change the DOM elements and its children. The marker itself
+as we're calling it can be one of four things, it can be and ATTRIBUTE, AND
+ELEMENT NAME, a comment, and even a CSS class.
+
+1. Register a Directive
+.directive('myTag', myTag);
+'myTag' - Normalized(CamelCased Name) name that will appear on HTML
+myTag - Factory Function - returns DDO - DIRECTIVE DEFINITION OBJECT
+executes only once, so perform initializations here, besides returning DDO
+
+2. Define Factory Function
+MyTag.$inject=[...]
+function MyTag(...) {
+var ddo = {
+  template: 'Hello World';
+};
+return ddo;
+}
+
+3. Use in HTML
+<my-tag></my-tag>
+Normalized name - myTag
