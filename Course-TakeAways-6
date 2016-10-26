@@ -25,3 +25,13 @@ return ddo;
 3. Use in HTML
 <my-tag></my-tag>
 Normalized name - myTag
+
+Restrict Property
+------------------------------------
+tells what angular compiler should look for to detect custom directive
+var ddo = {
+  restrict: 'AE' (Default: Attribute, Element)
+  template: 'Hello World';
+};
+Best: Use E when directive has content along with behavior
+Best: Use A when directive has no content but only extends the behavior of host element
