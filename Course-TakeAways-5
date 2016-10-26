@@ -1,0 +1,60 @@
+Promises
+--------------------------------------------
+Before Promises, Asynchronous Functions
+Prob: Many layers away, passing values from one to another
+Nested Async Calls- Hard to Read, Can't execute in parallel
+
+Promise
+Objects which can be passed around which hold references to the outcomes of the asynchronous behavior
+Created through $q service
+
+Angular JS $q service promise
+function asyncFunction() {
+// Creates async env, with all hooks into it including promise
+var deferred = $q.defer();
+// Marks Successful completion, wraps data for promise
+if(...) { deferred.resolve(result); }
+// Marks UnSuccessful completion, wraps data for promise
+else(...) { deferred.reject(error); }
+// Returns promise to caller (a hook back to entire process)
+return deferred.promise;
+}
+
+All above can be done asynchronously
+
+var promise = asyncFunction();
+promise.then(
+function(result) {
+//result, resolve method
+},
+function(error) {
+//error, reject method
+});
+// Can chain as well, then returns promise
+.then
+
+// Executes both promises in parallel
+$q.all(['promise1','promise2'])
+.then(function(result) {
+//can catch all results here
+})
+.catch(function(error) {
+
+});
+
+// Now using $q service of angular implementation, will use from JS impl. in new versions
+
+
+HTTP Service
+--------------------------------------
+$http({
+  method:"GET",
+  url:"http:some",
+  param:{param1: "value1"}
+}).then(
+function(){
+
+},
+function(){
+
+});
