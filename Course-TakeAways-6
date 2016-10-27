@@ -35,3 +35,35 @@ var ddo = {
 };
 Best: Use E when directive has content along with behavior
 Best: Use A when directive has no content but only extends the behavior of host element
+
+Isolate Scope
+----------------------------------------------------
+1. Breaks prototypal inheritance from the parent
+2. Less coupling between the directive and the controller
+
+var ddo = {
+  scope: {} - Signals isolate scope: Parent's scope is not inherited
+  template: 'Hello World';
+};
+
+'=' and '@'
+1. Bi-Directional Property Binding - (One change changes other)
+scope: {
+  myProp: '=myAttribute'
+}
+myProp - Local Scope Property
+myAttribute - HTML Template and Attribute Name
+myProp: '=' - Says that both are same
+myProp: '=?' - Signifies that attribute value is optional
+
+<my-tag my-prop="outerProp">
+</my-tag>
+
+
+2. DOM Attribute Property Binding -
+As OuterProp value changes, changes my-attribute, my-Prop value inside directive also changes
+But if directive value changes, nothing changes
+myProp: '@myAttribute'
+Binds myProp to the value of DOM attribute my-attribute
+<my-tag my-attribute={{outerProp}}>
+</my-tag>
