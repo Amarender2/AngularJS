@@ -54,9 +54,9 @@ scope: {
 myProp - Local Scope Property
 myAttribute - HTML Template and Attribute Name
 myProp: '=' - Says that both are same
-myProp: '=?' - Signifies that attribute value is optional
+myProp: '=?' - Signifies that attribute value is optional, otherwise specifying is mandatory
 
-<my-tag my-prop="outerProp">
+<my-tag my-attribute="outerProp">
 </my-tag>
 
 
@@ -67,3 +67,47 @@ myProp: '@myAttribute'
 Binds myProp to the value of DOM attribute my-attribute
 <my-tag my-attribute={{outerProp}}>
 </my-tag>
+
+
+Using Controllers Inside Directives
+----------------------------------------------------
+1. Declare Controller in Directive
+function MyDirective() {
+var ddo = {
+    scope: {
+      prop : '='
+    },
+    // Properties will now be available in this controllers scope
+    controller: controllerToFunction,
+    // Attach declared scope properties to controller instance instead directly to $scope
+    bindToController: true,
+    // Use myCtrl in directives template to refer to controller instance
+    controllerAs: 'myCtrl',
+    templateUrl: 'template.html'
+};
+return ddo;
+}
+
+2. Define Controller
+ShoppingListController1.$inject = ['ShoppingListFactory'];
+function ShoppingListController1(ShoppingListFactory) {
+  var myCtrl = this;
+
+  myCtrl.method() = function() {
+  var name = "Hello " + myCtrl.prop;
+  }
+  // use and manipulate properties using myCtrl, not just prop but all props in isolate scope
+}
+
+3. Use in Directive's Template
+<div ng-if="myCtrl.method()">
+  {{myCtrl.prop}}
+</div>
+
+Bi-Directional vs One-Way Binding
+prop: '=' - Bidirectional, two watchers
+prop: '<' - One way Binding, Watches only identity of parent property, not the property inside directive
+
+However, if objects binded using one way, if properties changes inside, then also it changes outside as
+objects passed by reference
+Bad practice to change objects passed into the directive, so better to use one-way
