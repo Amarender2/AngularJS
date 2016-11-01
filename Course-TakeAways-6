@@ -167,3 +167,29 @@ return ddo;
 function LinkFunction(scope, element, attrs, controller) {
 
 }
+
+Transclude in Directives
+----------------------------------
+Transclude allows whole template to be passed into a directive
+The wrapped content is evaluated in parent's context not in directive's context
+
+1.Set transclude to true
+function MyDirective() {
+var ddo = {
+    scope: {...},
+    link: LinkFunction,
+    transclude: true,
+    templateUrl: 'template.html'
+};
+return ddo;
+}
+
+2. Wrap some parent content
+<my-directive>
+<span>
+  Do you want to Continue? {{ctrl.prop}} // parent controller
+</span>
+</my-directive>
+
+3. ng-transclude to place wrapped content
+<div ng-transclude></div>
