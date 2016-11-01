@@ -144,3 +144,26 @@ return ddo;
 <button ng-click="dirCtrl.myMethod({myArg:'v1'});">
 method parameter is map object key:value pair
 <button>
+
+Link Function In Directives
+------------------------------------------
+DOM manipulation is usually done inside of the link function, Declared on DDO
+Link Function does not support injection, To use injection, inject them into directive
+
+
+1.Declare LinkFunction
+function MyDirective() {
+var ddo = {
+    scope: {...},
+    link: LinkFunction,
+    templateUrl: 'template.html'
+};
+return ddo;
+}
+
+// No Injection - scope same as $scope of directive, element is wrapper(JQLite(angular jquery) or JQuery Object)
+, attributes of tag, controller if any
+2. Define Link Function
+function LinkFunction(scope, element, attrs, controller) {
+
+}
