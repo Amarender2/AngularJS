@@ -111,3 +111,36 @@ prop: '<' - One way Binding, Watches only identity of parent property, not the p
 However, if objects binded using one way, if properties changes inside, then also it changes outside as
 objects passed by reference
 Bad practice to change objects passed into the directive, so better to use one-way
+
+Bind method from Directive to Controller
+-----------------------------------------------------
+'&' binding allows us to execute a expression in the context of parent scope
+
+1. Define method in controller
+function Controller() {
+// this refers to parent controller instance
+  this.method = function(arg1) {
+    this.prop = "Hi" + arg1;
+  }
+}
+
+2.Declare method reference in Directive
+function MyDirective() {
+var ddo = {
+    scope: {
+    (directive) : (parent Template)
+      myMethod: '&method'
+    },
+    templateUrl: 'template.html'
+};
+return ddo;
+}
+
+3. Declare in Parent Template
+<my-directive method= "ctrl.method(mrArg)">
+</my-directive>
+
+4. Mark Method and Args in Directive Template
+<button ng-click="dirCtrl.myMethod({myArg:'v1'});">
+method parameter is map object key:value pair
+<button>
