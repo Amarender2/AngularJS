@@ -95,3 +95,43 @@ $scope.$on('namespace: eventName', handlerFunction)
 function handlerFunction(event, data) {
 data.prop
 }
+
+Modules
+-----------------------------------------------------
+2-args creates modules
+1-arg retrieves existing modules
+
+1. Declare Module and Dependencies If any
+Unique Module name through application and Dependencies If Any
+angular.module('module1', []);
+angular.module('module2', []);
+angular.module('module3', ['module1', 'module2']);
+
+2. Declare Module Artifacts
+angular.module('module1', []) // If second argument missing, we are just retrieving
+.controller('MainController', Controller);
+
+3.  <html ng-app='module1'>
+    </html>
+
+Best way, Split JavaScript into Several Files
+<script> module.js </script>
+<script> controller.js </script>
+
+Order important , controller(use(artifact declarations)) after module(declare(module declaration))
+
+.config(function() {
+// Inject only Providers and Constants
+})
+
+.run(function() {
+// Inject only instance(services) and constants
+})
+
+First all 'configs' run, then all 'runs' run in order of dependencies
+
+angular.module('module1', []).controller('contr1',contr1);
+angular.module('module1').controller('contr2',contr2);
+angular.module('module1',[]).controller('contr3',contr3);
+
+No Error, only contr3 is binded, remaining are removed and can't be referenced.
