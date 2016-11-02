@@ -1,0 +1,49 @@
+Component Based Architecture
+------------------------------------------------
+Components only control their own view and data.
+Never modify data or DOM outside their own scope, it creates side effects and chaos
+That is why components always use isolate scope
+
+Components have well-defined public API inputs and output
+Inputs: They use only '<' and '@' attribute bindings only
+Never change property of passed in array or object, as it will change everywhere just like in java
+Output: Use '&' for component event callbacks
+Pass data to callback through param map {key : val}
+
+Components Have Well-Defined Lifecycle
+$onInit - Controller Initialization code - Only Once executed
+$onChanges(changeObj) - Called when one-way bindings are updated - 
+  changeObj.newValue and changeObj.oldValue
+$postLink - similar to 'link' in directive
+$onDestroy - when scope is about to be destroyed
+
+Application is a tree of components
+Entire app should be comprised of components
+Each one would have a well-defined input and output
+2-way binding is minimized as much as possible
+
+1. Register component with module
+2. Configure component
+angular.module('myApp',[])
+.component('myComponent',{ // Simple object not a function
+  templateUrl: 'template.html', // Always have a template
+  controller: CompController, // Not Required, If empty placed on scope with label '$ctrl'
+  bindings: { // bindings object is the isolate scope param mapping definition
+    prop1: '<',
+    prop2: '@',
+    onAction: '&'
+  }
+});
+
+3. Reference props in template
+<div ng-click="$ctrl.onAction({myArg:'val'})">
+{{$ctrl.prop1.prop}} and {{$ctrl.prop2}}
+</div>
+
+4. Use component in HTML
+<my-component
+prop1="asd"
+prop2="weer"
+onAction="parentFunction(myArg)">
+{{$ctrl.prop1.prop}} and {{$ctrl.prop2}}
+</my-component>
