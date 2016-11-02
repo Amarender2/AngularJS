@@ -1,2 +1,2 @@
 # AngularJS
-Sample Angular JS Application
+Concepts of Angular JS 

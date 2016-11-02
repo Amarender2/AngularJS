@@ -55,4 +55,35 @@ right in the state's declaration instead of template html
 controller: 'HomeCtrl'
 controllerAs: 'Home'
 
-Same way use Home.data as before 
+Same way use Home.data as before
+
+Routing Using Resolve
+-------------------------------------
+Resolve property can be used to inject values directly into the controller responsible for state
+If resolve property is a promise:
+1. Router will wait for it to resolve before transitioning into new state
+2. If rejected, router will not transition to new state at all
+Name of key in resolve should be same as injected one in controller
+Resolve can be objects or strings
+
+1. Set up Resolve Property
+.state( 'home', {
+  url : '/',
+  templateUr: 'Sample.html',
+  controller: 'HomeCtrl as Home',
+  resolve: {
+    myData : [ 'Service', function (Service) {
+      return Service.getData();
+    }]
+  }
+});
+
+Can also be String: myData: 'Hello World';
+If promise rejected, view is not changed at all
+
+2. Inject Resolve property into Controller
+HomeCtrl.$inject = ['myData'];
+function HomeCtrl(myData) {
+  var view = this;
+  view.myData = myData;
+}
