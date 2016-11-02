@@ -87,3 +87,51 @@ function HomeCtrl(myData) {
   var view = this;
   view.myData = myData;
 }
+
+Routing using URL parameters
+--------------------------------------------------
+States URL property can be defined with parameters
+wrapped in /{param1}, also regex available
+$stateParams service to retrieve the param
+$stateParams.paramName
+
+1. Setup URL property with params
+.state( 'home', {
+  url : '/view1/{param1},
+  templateUr: 'view1.html',
+  controller: 'View1Ctrl as view1',
+  resolve: {
+    myData : [ '$stateParams', function ($stateParams) {
+      return getData($stateParams.param1);
+    }]
+  }
+});
+
+2. Inject Resolve property into Controller
+HomeCtrl.$inject = ['myData'];
+function HomeCtrl(myData) {
+  var view = this;
+  view.myData = myData;
+}
+
+State name(Param name/value pairs)
+<a ui-sref="view1({itemId:someVal})">
+  Link
+</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1
