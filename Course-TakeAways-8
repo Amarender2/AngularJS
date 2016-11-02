@@ -1,0 +1,42 @@
+Routing
+----------------------------
+ngRoute                                           ui-router (Better Choice)
+----------------------------------------------------------------------------------
+seperate js file                            Seperate JS file
+Dev by Google                               Dev by community
+No concept of UI state                      UI state is central
+Every route must be represented by URL        Can have a route with no unique URL
+No Nested views                             URL routing is also supported
+Ok for Prototype Projects                   Nested Views supported
+
+
+1. Reference in HTML
+after angular js
+angular-ui-router.min.js
+
+2. Place ui-view initial view placeholder
+<ui-view></ui-view>
+Content of view will be loaded here
+
+3. Declare ui-router as dependency
+angular.module('myApp', ['ui.router']);
+
+4. Configure routes in .config method
+.config(RoutesConfig);
+
+RoutesConfig.inject= ['$stateProvider', '$urlRouterProvider'];
+function RoutesConfig($stateProvider, $urlRouterProvider) {
+}
+
+$stateProvider
+.state( 'view1', {
+  url : '/view1',
+  template: 'div tag'
+});
+// .state again if needed, chainable
+
+$urlRouterProvider
+.otherwise('/view1');
+
+ui-sref='view1'
+ui-sref-active='cssclasswhenactive'
