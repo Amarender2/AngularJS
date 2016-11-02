@@ -40,3 +40,19 @@ $urlRouterProvider
 
 ui-sref='view1'
 ui-sref-active='cssclasswhenactive'
+
+Routing Using Controller
+-----------------------------------------
+We can declare a controller that is responsible for the state's template
+right in the state's declaration instead of template html
+
+.state( 'home', {
+  url : '/',
+  templateUr: 'Sample.html',
+  controller: 'HomeCtrl as Home'
+});
+
+controller: 'HomeCtrl'
+controllerAs: 'Home'
+
+Same way use Home.data as before 
