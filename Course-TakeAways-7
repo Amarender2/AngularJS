@@ -12,7 +12,7 @@ Pass data to callback through param map {key : val}
 
 Components Have Well-Defined Lifecycle
 $onInit - Controller Initialization code - Only Once executed
-$onChanges(changeObj) - Called when one-way bindings are updated - 
+$onChanges(changeObj) - Called when one-way bindings are updated -
   changeObj.newValue and changeObj.oldValue
 $postLink - similar to 'link' in directive
 $onDestroy - when scope is about to be destroyed
@@ -47,3 +47,51 @@ prop2="weer"
 onAction="parentFunction(myArg)">
 {{$ctrl.prop1.prop}} and {{$ctrl.prop2}}
 </my-component>
+
+Event System
+-----------------------------------------
+Communicating with the parent
+Sol: Access parent scope
+$scope.$parent
+Use &method callback binding - Calls parent's method
+
+Communicating with the child
+Sol: Provide data input, send data into that component
+
+Communicating with multiple components, grandparent components
+repeat above ?? like $scope.$parent.$parent, send data multiply
+Used shared service ?? difficult, chaos may occur
+
+Publish Subscribe Design Pattern
+From anywhere in system to anywhere else in system
+Publishers send messages to subscribers on a common channel
+Publishers
+  - Mark messages with classification
+  - Don't know subscribers or if there any
+Subscribers
+  - Subscribe to messages with classification
+  - Don't know publishers or if there any
+In Angular, common channel is scope, Messages are events that can hold data
+
+2 publishers
+$scope.$emit - Up scope chain
+$scope.$broadcast - Down scope chain
+event('greet', {msg: hi})
+
+1 Listener
+$scope.$on('greet', handlerFunction) - Destroyed when view is destroyed, so nothing else to do
+or
+$rootScope.$on('', function); - Not Destroyed when view is destroyed, so De-Register it($ctrl.$onDestroy)
+
+If component not in chain, $rootScope.$broadcast
+$rootScope.$emit(You can but bad design)
+
+$scope.$emit/$broadcast(
+'namespace: eventName',
+{prop:value});
+
+$scope.$on('namespace: eventName', handlerFunction)
+
+function handlerFunction(event, data) {
+data.prop
+}
