@@ -149,24 +149,17 @@ Setting-Up Child(Nested View) State
 ChildCtrl.$inject = ['myData']
 function ChildCtrl(myData)
 
+Router State Transition Events
+-------------------------------------------
+Fired on $rootScope
 
+$rootScope.$on('stateChangeStart', - On Start of event start
+function(event, toState, toParams, fromState, fromParams, error) {
+........
+});
 
+stateChangeSuccess - On Success of event change
+stateChangeError - On Failure of event change, to catch all errors during state changes,
+                   resolve functions especially
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1
+event.preventDefault - To prevent transition from occurring
