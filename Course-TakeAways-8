@@ -119,6 +119,41 @@ State name(Param name/value pairs)
   Link
 </a>
 
+Route State with Nested Views
+----------------------------------------------
+List
+Details
+Master-Detail View Pair
+Nested States allows us to logically represent Nested Views
+Parent's state template has a ui-view in its template for a child's state template to insert HTML
+Child state is represented as 'parent.child'
+Optionally declared URL for child is concatenated to parents URL
+Parent's resolve property can be injected to child's controller
+
+.state( 'view1', {
+  url : '/view1,
+  templateUr: 'view1.html',
+  resolve : {
+    myData : 'Hello World';
+  }
+});
+
+Setting-Up Child(Nested View) State
+
+.state( 'view1.child', {
+  url : '/detail/{param1},
+  templateUr: 'view1Detail.html' // This is injected into view1.html parent, with <ui-view> tag
+  controller: 'ChildCtrl as child'
+});
+
+ChildCtrl.$inject = ['myData']
+function ChildCtrl(myData)
+
+
+
+
+
+
 
 
 
