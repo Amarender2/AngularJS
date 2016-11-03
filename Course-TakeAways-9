@@ -1,0 +1,16 @@
+Form Validation
+-----------------------------------
+1. Create HTML form with name attributes
+2. Bind input with ng-model or ng-click
+3. Declare HTML5 validation attributes (required or ng-min-length)
+ 'novalidate' in <form> to avoid HTML validation
+4. Use Angular form Bound Objects
+<span ng-if="formName.name.$error.required && formName.name.$touched">
+</span>
+5. Use Angular Validation Styles
+.ng-touched.ng-valid {
+  border : 2px green solid;
+}
+.ng-touched.ng-invalid {
+  border : 2px red solid;
+}
