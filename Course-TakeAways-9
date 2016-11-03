@@ -14,3 +14,13 @@ Form Validation
 .ng-touched.ng-invalid {
   border : 2px red solid;
 }
+
+Testing
+--------------------------------
+describe("CookieDetector", function() { ... }
+// Used to group tests together
+
+beforeEach(function() { ... }
+Used to initialize the state before running each test
+
+it("should be able to detect no cookies", function() { ... }
