@@ -24,3 +24,15 @@ beforeEach(function() { ... }
 Used to initialize the state before running each test
 
 it("should be able to detect no cookies", function() { ... }
+
+Controller Testing
+-------------------------------------
+Angular provides ngMock Module to help with unit testing
+To test a controller you need:
+1. Load module controller is in angular.mock.module('name')
+2. Use $controller to instantiate the controller you want to test
+3. controller instance to invoke methods, access props
+Do most of the setup in beforeEach
+At least module('name') loading or more
+$provide service can be injected only into module('name')
+For other services, use angular.mock.inject method
