@@ -36,3 +36,12 @@ Do most of the setup in beforeEach
 At least module('name') loading or more
 $provide service can be injected only into module('name')
 For other services, use angular.mock.inject method
+
+Service Testing
+---------------------------------------
+$injector service is used to inject mocked Services and httpBackend to simulate network server response
+
+menucategories = $injector.get('MenuCategoriesService');
+It will retrieve the service 'MenuCategoriesService' defined in the injected module.
+
+$httpBackend = $injector.get('$httpBackend');
