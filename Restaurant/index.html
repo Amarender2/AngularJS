@@ -13,6 +13,9 @@
   <!-- Strict Dependency Injection, Injection without protecting
   it from minimization, angular throws error -->
   <body ng-app="restaurant" ng-strict-di>
+
+    <!-- Fixed Position Indicator -->
+    <loading class="loading-indicator"></loading>
     <header>
       <nav id="header-nav" class="navbar navbar-default">
         <div class="container">
@@ -115,6 +118,10 @@
 
     <!-- Main Restaurant Module -->
     <script src="src/restaurant.module.js"></script>
+
+    <!-- Common Module -->
+    <script src="src/common/common.module.js"></script>
+    <script src="src/common/loading/loading.component.js"></script>
 
     <!-- Public Module -->
     <script src="src/public/public.module.js"></script>
