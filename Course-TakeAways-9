@@ -55,4 +55,13 @@ Use $compile service to compile directive string and then using the returned fun
 data by passing in $rootScope
 Call $rootScope.digest to update the compiled HTML
 Retrieve produced html with .html() method and compare
- 
+
+Components Testing
+--------------------------------------
+ngMock module's $componentController
+In BeforeEach
+Use mock inject to inject $ComponentController service
+In Test
+Setup a binding object with expected props
+Setup objects controller expects to be injected
+Create Controller with $ComponentController('componentName', injections, bindings);
