@@ -1,0 +1,3 @@
+http service interceptor to show loading spinner
+1. $http Service - async operations for data retrieve - so throw event then
+2. public.html -> public.home.html, requests for this are async made by http service
