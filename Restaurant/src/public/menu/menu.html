@@ -1,2 +1,5 @@
-<h1>Hello Amar, Welcome to Menu</h1>
-{{menuCtrl.menuCategories | json }}
+<div class="container">
+  <h1>Hello Amar, Welcome to Menu</h1>
+  <menu-category ng-repeat="menuCategory in menuCtrl.menuCategories"
+                category="menuCategory"></menu-category>
+</div>
