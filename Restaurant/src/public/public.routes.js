@@ -21,7 +21,14 @@ function routeConfig ($stateProvider) {
     })
     .state('public.menu', {
       url: '/menu',
-      templateUrl: 'src/public/menu/menu.html'
+      templateUrl: 'src/public/menu/menu.html',
+      controller: 'MenuController',
+      controllerAs: 'menuCtrl',
+      resolve: {
+        menuCategories: ['MenuService', function (MenuService) {
+          return MenuService.getCategories();
+        }]
+      }
     });
 }
 })();
