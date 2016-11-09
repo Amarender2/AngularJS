@@ -1,0 +1,92 @@
+CourseEra Angular JS Course TakeAways
+---------------------------------
+Tools Used
+Git, Atom, Chrome, Browser Sync(NodeJS for it)
+
+git clone repo
+cd AngularJS -> atom .
+To Start : browser-sync start --server --directory --files "**/*"
+
+Why AngularJS ?
+Reduce Complexity
+Find relevant code easily
+Update functionality without re-writing large code
+Code Re-Use
+Testable only
+
+Why Code Complex ?
+Hard to Read Code
+Lack of High Cohesion and Loose Coupling
+HTML-JS - Tight Coupling
+One function three diff things - Low Cohesion
+
+MVVM Architecture
+Model-View-ViewModel (Angular not restricted to MVVM)
+
+Model
+Raw data
+Some data may be displayed in the view
+Logic to retrieve data from src
+No Logic to display
+Only data
+
+View
+UI(HTML, CSS
+Only displays never changes
+Broadcasts events, not handles them
+
+View Model
+Representation of the state of the view
+Holds the data that's displayed in view
+Responds to events, presentation logic
+Calls other to buss. logic processing
+Never directly asks the view to display
+
+Declarative Binder
+Binds the model of view model to view
+Frameworks does it
+Key Enabler of MVVM
+
+UI/Presentation                     Presentation Logic                Data/Business Logic
+View                                View Model                        Model
+HTML,CSS                            JS                                JS
+               Data Binding (Declarative)
+Also modify DOM from JS(if needed)
+Integrate other JS libraries
+MV*, MV-Whatever framework
+
+Angular JS Installation
+app.js -> IIFE (Immediately invoked function expression)
+()(); No Local bleed to global scope
+angular.min.js -> download
+
+angular.module("App", [dependencies])
+.controller('Controller', ControllerFunction);
+
+$scope angular provides this service
+app.js     - $scope.name
+index.html - {{name}} or ng-model="name"
+
+ng-App
+ng-Controller
+
+document.querySelector("[ng-app]");
+
+Dependency Injection
+---------------------------------
+Angular JS instantiates $scope object
+Design Pattern Inversion of Control for resolving dependencies
+
+Shopping Cart                       Bank c1 = new Bank();
+Card Process                        SC sc = new SC(card);
+
+Client does not instantiate dependency, System creates card and gives to shopping(you)
+
+Bank1 Card1
+Bsnk2 Card2
+
+$scope - Scope Service
+$filter - Filter Service
+AJS injects (IoC)
+
+Filtering functions used to format data & display it to User
