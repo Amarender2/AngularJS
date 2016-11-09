@@ -1,0 +1,12 @@
+
+<h2>{{$ctrl.menuItem.name}}</h2>
+<img width="200" height="200"
+     ng-src="{{$ctrl.basePath}}/images/{{$ctrl.menuItem.short_name}}.jpg"
+     alt="{{$ctrl.menuItem.name}}" />
+<br>
+{{$ctrl.menuItem.price_small | currency}} {{$ctrl.menuItem.small_portion_name}}
+{{$ctrl.menuItem.price_large | currency}} {{$ctrl.menuItem.large_portion_name}}
+<br>
+Name: {{$ctrl.menuItem.name}}
+Description: {{$ctrl.menuItem.description}}
+<br>

@@ -1,8 +1,7 @@
-{{ menuItemsCtrl.menuItems | json }}
-{{name}} Menu
-{{special_instructions}}
-{{short_name}}
-￼
-{{price_small}} {{small_portion_name}} {{price_large}} {{large_portion_name}}
-{{name}}
-{{description}}
+<!-- {{ menuItemsCtrl.menuItems | json }} -->
+<div class="container">
+  <h2 class="text-center">{{menuItemsCtrl.menuItems.category.name}} Menu </h2>
+  <h3 class="text-center">{{menuItemsCtrl.menuItems.category.special_instructions}}</h3>
+  <menu-item ng-repeat="menuItem in menuItemsCtrl.menuItems.menu_items"
+             menu-item="menuItem"></menu-item>
+</div>
